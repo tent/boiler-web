@@ -20,7 +20,7 @@
 		render: function () {
 			var AppNavItem = Boiler.Views.AppNavItem;
 			var navItems = this.props.navItems.map(function (item) {
-				return <AppNavItem key={item.path} path={item.path} active={item.path === this.state.activepath} iconClassName={item.iconClassName} name={item.name} />;
+				return <AppNavItem key={item.path} path={item.path} active={item.path === this.state.activePath} iconClassName={item.iconClassName} name={item.name} />;
 			}.bind(this));
 			return (
 				<div>
