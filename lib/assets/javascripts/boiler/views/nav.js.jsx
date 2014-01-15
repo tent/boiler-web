@@ -7,7 +7,7 @@
 
 		getInitialState: function () {
 			return {
-				activeFragment: null,
+				activePath: null,
 				menuActive: false
 			};
 		},
@@ -20,7 +20,7 @@
 		render: function () {
 			var AppNavItem = Boiler.Views.AppNavItem;
 			var navItems = this.props.navItems.map(function (item) {
-				return <AppNavItem key={item.fragment} fragment={item.fragment} active={item.fragment === this.state.activeFragment} iconClassName={item.iconClassName} name={item.name} />;
+				return <AppNavItem key={item.path} path={item.path} active={item.path === this.state.activepath} iconClassName={item.iconClassName} name={item.name} />;
 			}.bind(this));
 			return (
 				<div>
@@ -34,20 +34,20 @@
 	});
 
 	Boiler.Views.AppNavItem = React.createClass({
-		fragmentPath: function (fragment) {
-			return Boiler.Helpers.fullPath('/' + fragment);
+		pathPath: function (path) {
+			return Boiler.Helpers.fullPath('/' + path);
 		},
 
 		handleClick: function (e) {
 			e.preventDefault();
 			if (this.props.authenticated) {
-				Marbles.history.navigate(this.props.fragment, { trigger: true });
+				Marbles.history.navigate(this.props.path, { trigger: true });
 			}
 		},
 
 		render: function () {
 			return (
-				<a className={(this.props.active ? 'active' : '') + (this.props.authenticated ? '' : ' disabled') } href={this.fragmentPath(this.props.fragment)} onClick={this.handleClick}>
+				<a className={(this.props.active ? 'active' : '') + (this.props.authenticated ? '' : ' disabled') } href={this.pathPath(this.props.path)} onClick={this.handleClick}>
 					<li>
 						<i className={this.props.iconClassName}></i>{this.props.name}
 					</li>
