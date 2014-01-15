@@ -1,5 +1,6 @@
 require 'boiler/version'
 require 'yajl'
+require 'erb'
 
 require 'icing/compiler'
 require 'marbles-js/compiler'
@@ -9,6 +10,11 @@ module Boiler
 
   def self.settings
     @settings ||= {}
+  end
+
+  def self.erb(path)
+    template = ERB.new(File.read(path))
+    template.result(self.class_eval { binding })
   end
 
   def self.configure(options = {})
@@ -68,14 +74,14 @@ module Boiler
 
     self.settings[:global_nav_config_path] = options[:global_nav_config_path] || ENV['GLOBAL_NAV_CONFIG']
     if self.settings[:global_nav_config_path] && File.exists?(self.settings[:global_nav_config_path])
-      self.settings[:global_nav_config] = Yajl::Parser.parse(File.read(self.settings[:global_nav_config_path]))
+      self.settings[:global_nav_config] = Yajl::Parser.parse(erb(self.settings[:global_nav_config_path]))
     end
     self.settings[:global_nav_config] ||= {}
     self.settings[:global_nav_config]['items'] ||= []
 
     self.settings[:nav_config_path] = options[:nav_config_path] || ENV['NAV_CONFIG']
     if self.settings[:nav_config_path] && File.exists?(self.settings[:nav_config_path])
-      self.settings[:nav_config] = Yajl::Parser.parse(File.read(self.settings[:nav_config_path]))
+      self.settings[:nav_config] = Yajl::Parser.parse(erb(self.settings[:nav_config_path]))
     end
     self.settings[:nav_config] ||= {}
     self.settings[:nav_config]['items'] ||= []
