@@ -1,0 +1,7 @@
+if (typeof Raven !== 'undefined') {
+	Raven.config(<%= Yajl::Encoder.encode(Boiler.settings[:sentry_url]) %>, {
+		whitelistUrls: [/<%= URI(Boiler.settings[:url]).host %>/],
+		fetchContext: true,
+		linesofContext: 3
+	}).install()
+}

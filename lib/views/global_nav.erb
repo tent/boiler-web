@@ -1,0 +1,10 @@
+<ul class='unstyled custom-container'>
+  <% Boiler.settings[:global_nav_config]['items'].to_a.each do |item| %>
+    <li <% if item['selected'] %>class='nav-selected'<% end %>>
+      <a href='<%= item['url'] %>' title='<%= item['name'] %>'><div class='nav-icon icon-2x <%= item['iconClassName'] %>'></div></a>
+    </li>
+  <% end %>
+
+  <li id='auth-button'>
+  </li>
+</ul>

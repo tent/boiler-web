@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= Boiler.settings[:name] %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link href="<%= asset_path("icing.css") %>" rel="stylesheet">
+    <link href="<%= asset_path("application.css") %>" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class='v-navbar-fixed-left'>
+      <%= erb :global_nav %>
+    </div>
+
+    <div id='main-nav'>
+    </div>
+
+    <div id='main-container' class='container'>
+      <div id='main' class='pull-left'>
+      </div>
+    </div>
+
+    <script type='application/javascript' src='<%= asset_path('lodash.js') %>'></script>
+    <script type='application/javascript' src='<%= asset_path('moment.js') %>'></script>
+    <script type='application/javascript' src='<%= asset_path('react.js') %>'></script>
+    <script type='application/javascript' src='<%= asset_path('react-infinite-scroll.js') %>'></script>
+    <script type='application/javascript' src='<%= asset_path('marbles.js') %>'></script>
+    <% if Boiler.settings[:sentry_url] %>
+      <script type='application/javascript' src='<%= asset_path('raven.js') %>'></script>
+    <% end %>
+    <script type='application/javascript' src='<%= asset_path('boiler.js') %>'></script>
+    <script type='application/javascript' src='<%= asset_path('application.js') %>'></script>
+  </body>
+</html>
