@@ -63,9 +63,10 @@ module Boiler
 
     self.settings[:layout_dir] = File.expand_path(File.join(self.settings[:assets_dir]))
 
-    self.settings[:layouts] = options[:layouts] || {
-      :application => '/*'
-    }
+    self.settings[:layouts] = options[:layouts] || [{
+      :name => :application,
+      :route => '/*'
+    }]
 
     self.settings[:asset_manifest_path] = options[:asset_manifest_path] || ENV['APP_ASSET_MANIFEST']
     if self.settings[:asset_manifest_path] && File.exists?(self.settings[:asset_manifest_path])

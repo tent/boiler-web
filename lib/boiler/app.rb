@@ -110,11 +110,11 @@ module Boiler
       end
     end
 
-    Boiler.settings[:layouts].each_pair do |view_name, route|
-      get route do |b|
+    Boiler.settings[:layouts].each do |layout|
+      get layout[:route] do |b|
         b.use ContentSecurityPolicy
         b.use Authentication
-        b.use RenderView, :view => view_name
+        b.use RenderView, :view => layout[:name]
       end
     end
   end
