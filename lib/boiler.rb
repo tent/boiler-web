@@ -86,6 +86,8 @@ module Boiler
     self.settings[:nav_config] ||= {}
     self.settings[:nav_config]['items'] ||= []
 
+    self.settings[:js_config] = options[:js_config] || {}
+
     # Default config.json url
     self.settings[:json_config_url] ||= "#{self.settings[:url].to_s.sub(%r{/\Z}, '')}/auth/config.json"
 

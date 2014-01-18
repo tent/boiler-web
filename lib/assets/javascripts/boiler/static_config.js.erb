@@ -1,12 +1,12 @@
 //= require ./core
 
-Boiler.config = {
-  JSON_CONFIG_URL: <%= Yajl::Encoder.encode(Boiler.settings[:json_config_url]) %>,
-  PATH_PREFIX: <%= Yajl::Encoder.encode(Boiler.settings[:path_prefix]) %>,
+Boiler.config = <%= Yajl::Encoder.encode({
+  JSON_CONFIG_URL: Boiler.settings[:json_config_url],
+  PATH_PREFIX: Boiler.settings[:path_prefix],
 
-  SIGNIN_URL: <%= Yajl::Encoder.encode(Boiler.settings[:signin_url]) %>,
-  SIGNOUT_URL: <%= Yajl::Encoder.encode(Boiler.settings[:signout_url]) %>,
-  SIGNOUT_REDIRECT_URL: <%= Yajl::Encoder.encode(Boiler.settings[:signout_redirect_url]) %>,
+  SIGNIN_URL: Boiler.settings[:signin_url],
+  SIGNOUT_URL: Boiler.settings[:signout_url],
+  SIGNOUT_REDIRECT_URL: Boiler.settings[:signout_redirect_url],
 
-  nav: <%= Yajl::Encoder.encode(Boiler.settings[:nav_config]) %>
-};
+  nav: Boiler.settings[:nav_config]
+}.merge(Boiler.settings[:js_config])) %>
