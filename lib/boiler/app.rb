@@ -59,8 +59,8 @@ module Boiler
       def content_security_policy
         [
           "default-src 'self'",
-          "frame-ancestors 'none'",
-          "frame-src 'none'",
+          "frame-ancestors 'self'",
+          "frame-src 'self'",
           "object-src 'none'",
           "img-src *",
           "connect-src *"
