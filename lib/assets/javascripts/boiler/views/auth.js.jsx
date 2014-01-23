@@ -20,7 +20,7 @@ Boiler.Views.Auth = React.createClass({
 			submitEnabled: false
 		});
 
-    new Marbles.HTTP({
+    Marbles.HTTP({
       method: 'POST',
       url: this.props.signinURL,
       body: {

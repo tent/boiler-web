@@ -12,7 +12,7 @@ Boiler.Views.AuthButton = React.createClass({
 	},
 
 	performSignout: function () {
-		new Marbles.HTTP({
+		Marbles.HTTP({
 			method: 'POST',
 			url: this.props.signoutURL,
 			middleware: [Marbles.HTTP.Middleware.WithCredentials],
