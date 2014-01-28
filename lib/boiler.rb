@@ -61,6 +61,10 @@ module Boiler
       names | Dir[File.join(root, '*/*.*')].map { |path| path.split('/').last }
     end | Icing::Compiler::ASSET_NAMES | MarblesJS::Compiler::ASSET_NAMES | MarblesJS::Compiler::VENDOR_ASSET_NAMES
 
+    if self.settings[:sentry_url]
+      self.settings[:asset_names].push('raven.js')
+    end
+
     self.settings[:layout_dir] = File.expand_path(File.join(self.settings[:assets_dir]))
 
     self.settings[:layouts] = options[:layouts] || [{
