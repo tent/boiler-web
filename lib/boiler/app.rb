@@ -56,15 +56,22 @@ module Boiler
         env
       end
 
+      def content_security_policy_rules
+        {
+          "default-src" =>"'self'",
+          "frame-ancestors" => "'self'",
+          "frame-src" => "'self'",
+          "object-src" => "'none'",
+          "img-src" => "*",
+          "connect-src" => "*"
+        }
+      end
+
       def content_security_policy
-        [
-          "default-src 'self'",
-          "frame-ancestors 'self'",
-          "frame-src 'self'",
-          "object-src 'none'",
-          "img-src *",
-          "connect-src *"
-        ].join('; ')
+        content_security_policy_rules.inject([]) do |memo, (k,v)|
+          memo << "#{k} #{v}"
+          memo
+        end.join('; ')
       end
     end
 
