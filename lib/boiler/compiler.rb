@@ -87,8 +87,8 @@ module Boiler
 
       system  "mkdir -p #{layout_dir}"
 
-      Boiler.settings[:layouts].each_pair do |layout_name, route|
-        compile_layout(layout_name.to_s, options)
+      Boiler.settings[:layouts].each do |layout|
+        compile_layout(layout[:name].to_s, options)
       end
     end
 
