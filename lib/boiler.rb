@@ -65,7 +65,7 @@ module Boiler
       self.settings[:asset_names].push('raven.js')
     end
 
-    self.settings[:layout_dir] = File.expand_path(File.join(self.settings[:assets_dir]))
+    self.settings[:layout_dir] = File.expand_path(File.join(self.settings[:assets_dir], '..'))
 
     self.settings[:layouts] = options[:layouts] || [{
       :name => :application,
