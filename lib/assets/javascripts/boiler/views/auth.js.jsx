@@ -96,7 +96,7 @@ Boiler.Views.Auth = React.createClass({
 					</div>
 
 					<div className='control-group' className={ this.classNameForField('passphrase') }>
-						<label>Password</label>
+						<label>Passphrase</label>
 						<div className='input-append'>
 							<input ref='passphrase' name='passphrase' type='password' />
 							<span className='add-on'><i></i></span>
