@@ -57,6 +57,10 @@ module Boiler
           RavenJS::Sprockets.setup(environment)
           Icing::Sprockets.setup(environment)
 
+          if Boiler.settings[:configure_sprockets]
+            Boiler.settings[:configure_sprockets].call(environment)
+          end
+
           environment
         end
       end

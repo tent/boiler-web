@@ -91,6 +91,8 @@ module Boiler
     self.settings[:nav_config] ||= {}
     self.settings[:nav_config]['items'] ||= []
 
+    self.settings[:configure_sprockets] = options[:configure_sprockets]
+
     self.settings[:js_config] = options[:js_config] || {}
 
     # Default config.json url
