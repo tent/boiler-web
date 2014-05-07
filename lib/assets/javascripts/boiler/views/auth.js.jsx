@@ -42,7 +42,7 @@ Boiler.Views.Auth = React.createClass({
 	handleSubmitResponse: function (res, xhr) {
 		if (xhr.status === 200) {
 			this.setState({
-				alert: { text: "You are now signed in", type: 'success' },
+				alert: { text: "You are now logged in", type: 'success' },
 				fieldsSuccess: {
 					username: true,
 					passphrase: true
@@ -82,7 +82,7 @@ Boiler.Views.Auth = React.createClass({
 
 		return (
 			<div>
-				<h2 className='page-header'>Sign in</h2>
+				<h2 className='page-header'>Log in</h2>
 
 				<form className='signin-form' onSubmit={this.handleSubmit}>
 					{alertEl}
@@ -103,7 +103,7 @@ Boiler.Views.Auth = React.createClass({
 						</div>
 					</div>
 
-					<button className='btn btn-primary' type='submit' disabled={!this.state.submitEnabled}>Sign in</button>
+					<button className='btn btn-primary' type='submit' disabled={!this.state.submitEnabled}>Log in</button>
 				</form>
 			</div>
 		);
