@@ -7,17 +7,8 @@ Boiler.Views.AuthButton = React.createClass({
 		e.preventDefault();
 
 		if (this.props.authenticated) {
-			this.performSignout();
+			this.props.onClick();
 		}
-	},
-
-	performSignout: function () {
-		Marbles.HTTP({
-			method: 'POST',
-			url: this.props.signoutURL,
-			middleware: [Marbles.HTTP.Middleware.WithCredentials],
-			callback: this.props.handleSignout
-		});
 	},
 
 	render: function () {
