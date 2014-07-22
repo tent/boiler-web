@@ -7,6 +7,7 @@ Boiler.config = <%= Yajl::Encoder.encode({
   SIGNIN_URL: Boiler.settings[:signin_url],
   SIGNOUT_URL: Boiler.settings[:signout_url],
   SIGNOUT_REDIRECT_URL: Boiler.settings[:signout_redirect_url],
+  RESET_PASSPHRASE_URL: Boiler.settings[:reset_passphrase_url],
 
   nav: Boiler.settings[:nav_config]
 }.merge(Boiler.settings[:js_config])) %>

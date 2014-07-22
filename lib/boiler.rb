@@ -46,6 +46,7 @@ module Boiler
     self.settings[:signin_url]           = options[:signin_url]           || ENV['SIGNIN_URL']
     self.settings[:signout_url]          = options[:signout_url]          || ENV['SIGNOUT_URL']
     self.settings[:signout_redirect_url] = options[:signout_redirect_url] || ENV['SIGNOUT_REDIRECT_URL']
+    self.settings[:reset_passphrase_url] = options[:reset_passphrase_url] || ENV['RESET_PASSPHRASE_URL']
 
     self.settings[:vendor_asset_root] = File.expand_path('../../vendor/assets', __FILE__) # vendor/assets
     self.settings[:lib_asset_root] = File.expand_path('../assets', __FILE__) # lib/assets
